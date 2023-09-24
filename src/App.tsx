@@ -1,14 +1,14 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
 
-import AppProviders from "./hook";
-import Router from "./router";
+import AppProviders from "./Hooks";
+import Router from "./router/OrchestratorRoutes";
 
 import Global from "./@styles/global";
 import { ConfigProvider } from "antd";
 import ptBRAnt from "antd/lib/locale/pt_BR";
 
-import { Layout } from "./layout";
+import { Layout } from "./layouts";
 
 const App = () => (
   <ConfigProvider locale={ptBRAnt}>

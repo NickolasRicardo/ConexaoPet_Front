@@ -4,7 +4,7 @@ import { paths } from "../router/path.routes";
 import { Menu } from "antd";
 
 import * as S from "./styles";
-import { useAuth } from "../hook/authenticator";
+import { useAuth } from "../Hooks/authenticator";
 
 interface Props {
   children: React.ReactNode;

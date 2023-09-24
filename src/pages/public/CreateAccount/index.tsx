@@ -1,18 +1,35 @@
 import React from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
+import { cpf } from "cpf-cnpj-validator";
 
 import { useAuth } from "../../../Hooks/authenticator";
-import * as styles from "./styles";
+import {
+  ButtonCss,
+  StyledField as Field,
+  StyledForm as Form,
+  Container,
+  FormContent,
+  FormTitle,
+  Content,
+} from "./styles";
 import { Grid } from "@mui/material";
+import { Typography } from "@material-ui/core";
 import { Button } from "antd";
 
 // VALIDATION
 const SignInSchema = Yup.object().shape({
   userEmail: Yup.string()
-    .min(2, "Usuário muito curto!")
-    .max(50, "Usuário muito longo!")
+    .email("O e-mail inserido é inválido.")
     .required("Obrigatório"),
+
+  userName: Yup.string().min(2, "Nome muito curto!").required("Obrigatório"),
+  CPF: Yup.string()
+    .min(2, "Nome muito curto!")
+    .required("Obrigatório")
+    .test("CpfValidation", "O CPF digitado é inválido", (values) =>
+      cpf.isValid(values)
+    ),
   password: Yup.string()
     .min(2, "Senha muito curta!")
     .max(50, "Senha muito longa!")
@@ -21,10 +38,17 @@ const SignInSchema = Yup.object().shape({
       "A senha deverá conter 8 characters, um em caixa alta, um numero and um caracter especial"
     )
     .required("Obrigatório"),
+  passwordConfirmation: Yup.string().test(
+    "passwords-match",
+    "As senhas não combinam",
+    function (value) {
+      return this.parent.password === value;
+    }
+  ),
 });
 
 // HTML PAGE
-function LoginPage() {
+function CreateUserPage() {
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState(false);
   const { signIn } = useAuth();
@@ -53,11 +77,15 @@ function LoginPage() {
         }}
       >
         <Grid item lg={12} xs={12} md={12} sm={12}>
-          <styles.Content>
+          <Content>
             <Formik
               initialValues={{
                 userEmail: "",
                 password: "",
+                userName: "",
+                userPhone: "",
+                CPF: "",
+                passwordConfirmation: "",
               }}
               validationSchema={SignInSchema}
               onSubmit={(values) => {
@@ -65,8 +93,8 @@ function LoginPage() {
               }}
             >
               {({ errors, touched, isValid }) => (
-                <styles.StyledForm>
-                  <styles.FormContent>
+                <Form>
+                  <FormContent>
                     <img
                       src={`https://img.freepik.com/vetores-premium/design-de-logotipo-de-cuidados-com-animais-de-estimacao_646665-51.jpg`}
                       style={{
@@ -76,26 +104,58 @@ function LoginPage() {
                       }}
                       alt={"Logo Conexão Pet"}
                     />
-                    <styles.StyledField
-                      name="userEmail"
-                      placeholder="userEmail"
-                    />
+                    <Typography>Nome:</Typography>
+
+                    <Field name="userName" placeholder="Nome completo" />
+                    {errors.userName && touched.userName ? (
+                      <div>{errors.userName}</div>
+                    ) : null}
+                    <br />
+                    <Typography>Email:</Typography>
+
+                    <Field name="userEmail" placeholder="Email" />
                     {errors.userEmail && touched.userEmail ? (
                       <div>{errors.userEmail}</div>
                     ) : null}
                     <br />
-                    <styles.StyledField
+                    <Typography>Telefone:</Typography>
+
+                    <Field name="userPhone" placeholder="Telefone" />
+                    {errors.userPhone && touched.userPhone ? (
+                      <div>{errors.userPhone}</div>
+                    ) : null}
+                    <br />
+                    <Typography>CPF:</Typography>
+                    <Field name="CPF" placeholder="Documento" maxLength={11} />
+                    {errors.CPF && touched.CPF ? <div>{errors.CPF}</div> : null}
+                    <br />
+                    <Typography>Senha:</Typography>
+
+                    <Field
                       name="password"
-                      placeholder="Password"
+                      placeholder="Senha"
                       type="password"
                     />
                     {errors.password && touched.password ? (
                       <div>{errors.password}</div>
                     ) : null}
                     <br />
-                    <styles.ButtonCss type="submit" disabled={!isValid}>
-                      {loading ? "carregando..." : "Entrar"}
-                    </styles.ButtonCss>
+
+                    <Typography>Confirmar senha:</Typography>
+
+                    <Field
+                      name="passwordConfirmation"
+                      placeholder="Confirmar senha:"
+                      type="password"
+                    />
+                    {errors.passwordConfirmation &&
+                    touched.passwordConfirmation ? (
+                      <div>{errors.passwordConfirmation}</div>
+                    ) : null}
+                    <br />
+                    <ButtonCss type="submit" disabled={!isValid}>
+                      {loading ? "carregando..." : "Criar conta"}
+                    </ButtonCss>
                     <br />
                     {error && (
                       <p style={{ color: "red" }}>
@@ -111,19 +171,19 @@ function LoginPage() {
                         alignSelf: "center",
                         marginTop: 0,
                       }}
-                      href="/new"
+                      href="/login"
                     >
-                      Novo usuário
+                      Voltar
                     </Button>
-                  </styles.FormContent>
-                </styles.StyledForm>
+                  </FormContent>
+                </Form>
               )}
             </Formik>
-          </styles.Content>
+          </Content>
         </Grid>
       </Grid>
     </>
   );
 }
 
-export { LoginPage };
+export { CreateUserPage };

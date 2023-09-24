@@ -5,6 +5,8 @@ import api from "../http/api";
 
 interface User {
   nome: string;
+  typeUser: string;
+  id: number;
 }
 
 interface AuthState {
@@ -26,7 +28,7 @@ interface AuthContextData {
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
 export const AuthProvider = ({ children }: any) => {
-  const [data, setData] = useState(() => {
+  const [data, setData] = useState<AuthState>(() => {
     const token = localStorage.getItem("@app:token");
     const user = localStorage.getItem("@app:user");
 
@@ -35,7 +37,7 @@ export const AuthProvider = ({ children }: any) => {
       return { token, user: JSON.parse(user) };
     }
 
-    return {};
+    return {} as AuthState;
   });
 
   const signIn = useCallback(async ({ useremail, password }: any) => {
@@ -47,7 +49,7 @@ export const AuthProvider = ({ children }: any) => {
     console.log(response.data);
     const { token, userName, userID, typeUser } = response.data;
 
-    const user = { useremail, token };
+    const user: User = { id: userID, nome: userName, typeUser: typeUser };
 
     localStorage.setItem("@app:token", token);
     localStorage.setItem("@app:userID", userID);
@@ -61,9 +63,10 @@ export const AuthProvider = ({ children }: any) => {
 
   const signOut = useCallback(() => {
     localStorage.removeItem("@app:token");
-    localStorage.removeItem("@app:user");
-
-    setData({});
+    localStorage.removeItem("@app:userID");
+    localStorage.removeItem("@app:userName");
+    localStorage.removeItem("@app:typeUser");
+    setData({} as AuthState);
   }, []);
 
   return (

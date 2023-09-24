@@ -1,5 +1,5 @@
 import React from "react";
-import { Test } from "../pages/private/Test";
+import { TestPrestador } from "../pages/private/Prestador/Test";
 export interface IPath {
   name: string;
   path: string;
@@ -10,6 +10,6 @@ export const paths = [
   {
     name: "Teste",
     path: "/",
-    component: <Test />,
+    component: <TestPrestador />,
   },
 ];

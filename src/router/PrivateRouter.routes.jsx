@@ -1,6 +1,6 @@
 import React from "react";
 import { Route as ReactDOMRoute, Redirect } from "react-router-dom";
-import { useAuth } from "../hook/authenticator";
+import { useAuth } from "../Hooks/authenticator";
 
 const Route = ({ isPrivate = false, component: Component, ...rest }) => {
   const { user } = useAuth();

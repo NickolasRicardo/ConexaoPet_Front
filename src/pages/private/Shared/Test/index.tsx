@@ -1,6 +1,6 @@
 import React from "react";
 
-export function Test() {
+export function TestGeral() {
   return (
     <>
       <h1>Test</h1>
