@@ -5,20 +5,24 @@ import { CreateUserPage } from "../../pages/public/CreateAccount";
 
 interface IRoute {
   path: string;
+  name?: string;
   component: React.ComponentType<any>;
 }
 
 const routes: IRoute[] = [
   {
     path: "/",
+    name: "login",
     component: () => <LoginPage />,
   },
   {
     path: "/login",
+    name: "login",
     component: () => <LoginPage />,
   },
   {
     path: "/register",
+    name: "register",
     component: () => <h1>Register auth</h1>,
   },
 

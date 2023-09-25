@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-export function TestGeral() {
+// HTML PAGE
+function TestGeral() {
+  useEffect(() => {
+    console.log("aqui");
+  }, []);
+
   return (
     <>
-      <h1>Test</h1>
+      <div
+        style={{ height: "100vch", width: "100%", backgroundColor: "black" }}
+      >
+        <h1>Teste shared</h1>
+      </div>
     </>
   );
 }
+
+export { TestGeral };
 

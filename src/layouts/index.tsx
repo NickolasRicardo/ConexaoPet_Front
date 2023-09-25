@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
-import { paths } from "../router/path.routes";
+
 import { Menu } from "antd";
 
 import * as S from "./styles";
 import { useAuth } from "../Hooks/authenticator";
+import { IRouteMenu } from "../router/routes/Shared.config.routes";
+import { routesSharedMenu } from "../router/routes/Shared.config.routes";
+import { routesPrestadorMenu } from "../router/routes/Prestador.config.routes";
 
 interface Props {
   children: React.ReactNode;
@@ -15,7 +18,21 @@ const Layout: React.FC<Props> = ({ children }) => {
   let history = useHistory();
   const location = useLocation();
 
+  const { user } = useAuth();
+
+  const [paths, setPaths] = useState<IRouteMenu[]>([]);
+
+  const loadingPaths = () => {
+    if (user.typeUser?.toLocaleLowerCase() === "prestador") {
+      setPaths(routesPrestadorMenu);
+    } else {
+      setPaths(routesSharedMenu);
+    }
+  };
+
   useEffect(() => {
+    console.log("aaa");
+    loadingPaths();
     setCurrentPath(location.pathname);
   }, [location]);
 
@@ -33,10 +50,9 @@ const Layout: React.FC<Props> = ({ children }) => {
             {path.name}
           </Menu.Item>
         ))}
-
         <Menu.Item onClick={() => sair()}>Logout</Menu.Item>
       </Menu>
-      <S.Container>{children}</S.Container>
+      <div>{children}</div>
     </>
   );
 };

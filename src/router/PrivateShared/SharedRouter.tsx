@@ -5,8 +5,9 @@ import { Layout } from "../../layouts";
 
 // import { getRouteByID } from '@hooks/getFuncionalidades';
 
-import { routesPrestador, IRoute } from "../routes/Prestador.config.routes";
+import { IRoute } from "../routes/Shared.config.routes";
 import { useAuth } from "../../Hooks/authenticator";
+import { routesShared } from "../routes/Shared.config.routes";
 
 function RenderRoutes(route: IRoute, key: number, user: any) {
   const ComponentRoute = route.component;
@@ -31,21 +32,23 @@ function RenderRoutes(route: IRoute, key: number, user: any) {
 
 function RoutePrivateShared() {
   const { user } = useAuth();
+  console.log(routesShared);
+
   return (
     <div>
       <Switch>
         <Route
           exact
           path="/"
-          component={() => <Redirect to={routesPrestador[0].path} />}
+          component={() => <Redirect to={routesShared[0].path} />}
         />
 
-        {routesPrestador.map((route, i) => RenderRoutes(route, i, user))}
+        {routesShared.map((route, i) => RenderRoutes(route, i, user))}
 
         <Route
           path="*"
           component={() => {
-            return <Redirect to={routesPrestador[0].path} />;
+            return <Redirect to={routesShared[0].path} />;
           }}
         />
       </Switch>

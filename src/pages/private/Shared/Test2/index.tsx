@@ -1,14 +1,17 @@
 import React, { useEffect } from "react";
 
-export function TestPrestador() {
+// HTML PAGE
+function TestGeral2() {
   useEffect(() => {
     console.log("aqui");
   }, []);
 
   return (
     <>
-      <h1>Teste Prestador</h1>
+      <h1>Teste shared</h1>
     </>
   );
 }
+
+export { TestGeral2 };
 

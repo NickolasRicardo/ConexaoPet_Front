@@ -5,9 +5,10 @@ import { Layout } from "../../layouts";
 
 // import { getRouteByID } from '@hooks/getFuncionalidades';
 
-import { routesPrestador, IRoute } from "../routes/Prestador.config.routes";
+import { routesPrestador } from "../routes/Prestador.config.routes";
 
 import { useAuth } from "../../Hooks/authenticator";
+import { IRoute } from "../routes/Shared.config.routes";
 
 function RenderRoutes(route: IRoute, key: number, user: any) {
   const ComponentRoute = route.component;

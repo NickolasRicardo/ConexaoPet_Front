@@ -4,9 +4,9 @@ import api_auth from "../http/api";
 import api from "../http/api";
 
 interface User {
-  nome: string;
-  typeUser: string;
-  id: number;
+  nome: string | null;
+  typeUser: string | null;
+  id: string | null;
 }
 
 interface AuthState {
@@ -30,11 +30,15 @@ const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 export const AuthProvider = ({ children }: any) => {
   const [data, setData] = useState<AuthState>(() => {
     const token = localStorage.getItem("@app:token");
-    const user = localStorage.getItem("@app:user");
+    const user: User = {
+      id: localStorage.getItem("@app:userID"),
+      nome: localStorage.getItem("@app:userName"),
+      typeUser: localStorage.getItem("@app:typeUser"),
+    };
 
     if (token && user) {
       api_auth.defaults.headers.authorization = `Bearer ${token}`;
-      return { token, user: JSON.parse(user) };
+      return { token, user };
     }
 
     return {} as AuthState;
