@@ -23,7 +23,7 @@ const routes: IRoute[] = [
   {
     path: "/register",
     name: "register",
-    component: () => <h1>Register auth</h1>,
+    component: () => <CreateUserPage />,
   },
 
   {

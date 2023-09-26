@@ -7,7 +7,7 @@ import RouterPrestador from "./Prestador/PrestadorRouter";
 import RoutePublic from "./public/PublicRouter.routes";
 
 import { useAuth } from "../Hooks/authenticator";
-import { getColors } from "@styles/colorsTheme";
+import { getColors } from "../@styles/colorsTheme";
 
 // import OperacionalLayout from '@layouts/Cliente';
 
@@ -28,10 +28,10 @@ const DrawLayoutClienteAdmin = (Route: any) => {
 
 function OrchestratorRoutes() {
   const { user } = useAuth();
-  console.log(user);
+  //console.log(user);
   if (!!user) {
     if (user.typeUser?.toLowerCase() === "tutor") {
-      console.log(RouterShared);
+      //console.log(RouterShared);
       return DrawLayoutClienteAdmin(RouterShared);
     } else if (user.typeUser?.toLowerCase() === "prestador") {
       return DrawLayoutClienteAdmin(RouterPrestador);

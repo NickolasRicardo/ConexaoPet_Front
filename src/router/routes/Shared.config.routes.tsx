@@ -1,9 +1,11 @@
 import React from "react";
+import { Home as HomeIcon, Person, Pets } from "@mui/icons-material";
 
 import { TestGeral } from "../../pages/private/Shared/Test";
 
-import { Home as HomeIcon } from "@mui/icons-material";
-import PaymentsIcon from "@mui/icons-material/Payments";
+import { MeuPerfil } from "../../pages/private/Shared/MeuPerfil";
+import { MeusPets } from "../../pages/private/Shared/MeusPets";
+import { BuscaPrestadores } from "../../pages/private/Shared/BuscaPrestadores";
 import { TestGeral2 } from "../../pages/private/Shared/Test2";
 
 export interface IRoute {
@@ -27,37 +29,117 @@ export interface IRouteMenu {
 export const routesShared: IRoute[] = [
   {
     index: 1,
-    path: "/",
-    name: "home",
-    component: TestGeral,
+    path: "/Home",
+    name: "Home",
+    component: BuscaPrestadores,
+    roles: ["tutor"],
+  },
+  // {
+  //   index: 2,
+  //   path: "/home",
+  //   name: "Home",
+  //   component: TestGeral,
+  //   roles: ["tutor"],
+  // },
+  {
+    index: 3,
+    path: "/Pets",
+    name: "Meus Pets",
+    component: MeusPets,
     roles: ["tutor"],
   },
   {
-    index: 1,
-    path: "/teste",
-    name: "tester",
-    component: TestGeral2,
+    index: 4,
+    path: "/Perfil",
+    name: "Meu Perfil",
+    component: MeuPerfil,
     roles: ["tutor"],
   },
+  // {
+  //   index: 5,
+  //   path: "/home",
+  //   name: "Home",
+  //   component: TestGeral,
+  //   roles: ["tutor"],
+  // },
+  // {
+  //   index: 6,
+  //   path: "/home",
+  //   name: "Home",
+  //   component: TestGeral,
+  //   roles: ["tutor"],
+  // },
+  // {
+  //   index: 7,
+  //   path: "/teste",
+  //   name: "teste",
+  //   component: TestGeral2,
+  //   roles: ["tutor"],
+  // },
 ];
 
 export const routesSharedMenu: IRouteMenu[] = [
   {
     index: 1,
-    path: "/",
+    path: "/Home",
     label: "Home",
-    name: "home",
+    name: "Home",
     Icon: HomeIcon,
+    roles: ["tutor"],
+    menu: "lateral",
+  },
+  // {
+  //   index: 2,
+  //   path: "/teste",
+  //   label: "teste",
+  //   name: "tester2",
+  //   Icon: HomeIcon,
+  //   roles: ["tutor"],
+  //   menu: "lateral",
+  // },
+  {
+    index: 3,
+    path: "/Pets",
+    label: "Meus Pets",
+    name: "Meus Pets",
+    Icon: Pets,
     roles: ["tutor"],
     menu: "lateral",
   },
   {
-    index: 2,
-    path: "/teste",
-    label: "tester",
-    name: "tester",
-    Icon: HomeIcon,
+    index: 4,
+    path: "/Perfil",
+    label: "Meu Perfil",
+    name: "Meu Perfil",
+    Icon: Person,
     roles: ["tutor"],
     menu: "lateral",
   },
+  // {
+  //   index: 5,
+  //   path: "/teste",
+  //   label: "teste",
+  //   name: "tester2",
+  //   Icon: HomeIcon,
+  //   roles: ["tutor"],
+  //   menu: "lateral",
+  // },
+  // {
+  //   index: 6,
+  //   path: "/teste",
+  //   label: "teste",
+  //   name: "tester2",
+  //   Icon: HomeIcon,
+  //   roles: ["tutor"],
+  //   menu: "lateral",
+  // },
+  // {
+  //   index: 7,
+  //   path: "/teste",
+  //   label: "teste",
+  //   name: "tester2",
+  //   Icon: HomeIcon,
+  //   roles: ["tutor"],
+  //   menu: "lateral",
+  // },
 ];

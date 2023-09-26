@@ -1,17 +1,16 @@
 import React from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
-
 import { useAuth } from "../../../Hooks/authenticator";
 import * as styles from "./styles";
 import { Grid } from "@mui/material";
 import { Button } from "antd";
+import Logo from "../../../Assets/ConexaoPet-logo.png";
 
 // VALIDATION
 const SignInSchema = Yup.object().shape({
   userEmail: Yup.string()
-    .min(2, "Usuário muito curto!")
-    .max(50, "Usuário muito longo!")
+    .email("O e-mail inserido é inválido.")
     .required("Obrigatório"),
   password: Yup.string()
     .min(2, "Senha muito curta!")
@@ -68,18 +67,16 @@ function LoginPage() {
                 <styles.StyledForm>
                   <styles.FormContent>
                     <img
-                      src={`https://img.freepik.com/vetores-premium/design-de-logotipo-de-cuidados-com-animais-de-estimacao_646665-51.jpg`}
+                      src={Logo}
                       style={{
                         width: 250,
                         display: "flex",
                         alignSelf: "center",
+                        paddingBottom: 50,
                       }}
                       alt={"Logo Conexão Pet"}
                     />
-                    <styles.StyledField
-                      name="userEmail"
-                      placeholder="userEmail"
-                    />
+                    <styles.StyledField name="userEmail" placeholder="Email" />
                     {errors.userEmail && touched.userEmail ? (
                       <div>{errors.userEmail}</div>
                     ) : null}
@@ -111,7 +108,7 @@ function LoginPage() {
                         alignSelf: "center",
                         marginTop: 0,
                       }}
-                      href="/new"
+                      href="/register"
                     >
                       Novo usuário
                     </Button>

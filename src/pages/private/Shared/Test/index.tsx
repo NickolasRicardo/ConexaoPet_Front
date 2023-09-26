@@ -8,11 +8,7 @@ function TestGeral() {
 
   return (
     <>
-      <div
-        style={{ height: "100vch", width: "100%", backgroundColor: "black" }}
-      >
-        <h1>Teste shared</h1>
-      </div>
+      <h1>Teste shared</h1>
     </>
   );
 }

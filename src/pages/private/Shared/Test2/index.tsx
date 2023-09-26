@@ -8,7 +8,7 @@ function TestGeral2() {
 
   return (
     <>
-      <h1>Teste shared</h1>
+      <h1>Teste shared2</h1>
     </>
   );
 }

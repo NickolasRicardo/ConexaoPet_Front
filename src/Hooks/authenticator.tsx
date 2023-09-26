@@ -3,7 +3,7 @@ import React, { createContext, useCallback, useState, useContext } from "react";
 import api_auth from "../http/api";
 import api from "../http/api";
 
-interface User {
+export interface User {
   nome: string | null;
   typeUser: string | null;
   id: string | null;
@@ -50,7 +50,7 @@ export const AuthProvider = ({ children }: any) => {
       password,
     });
 
-    console.log(response.data);
+    //console.log(response.data);
     const { token, userName, userID, typeUser } = response.data;
 
     const user: User = { id: userID, nome: userName, typeUser: typeUser };

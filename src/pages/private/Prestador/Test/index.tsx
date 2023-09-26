@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 
 export function TestPrestador() {
   useEffect(() => {
-    console.log("aqui");
+    //console.log("aqui");
   }, []);
 
   return (

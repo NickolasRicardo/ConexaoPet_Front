@@ -14,17 +14,13 @@ function RenderRoutes(route: IRoute, key: number, user: any) {
   const ComponentRoute = route.component;
   // if (getRouteByID(route.id)) {
 
-  if (route.roles.includes(user.role)) {
+  if (route.roles.includes(user.typeUser.toLowerCase())) {
     return (
       <Route
         key={key}
         path={route.path}
         exact
-        component={() => (
-          <Layout>
-            <ComponentRoute />
-          </Layout>
-        )}
+        component={() => <ComponentRoute />}
       />
     );
   }

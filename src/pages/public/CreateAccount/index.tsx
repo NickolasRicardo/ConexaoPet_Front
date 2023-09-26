@@ -17,6 +17,7 @@ import { Grid } from "@mui/material";
 import { Typography } from "@material-ui/core";
 import { Button } from "antd";
 
+import logo from "../../../Assets/ConexaoPet-logo.png";
 // VALIDATION
 const SignInSchema = Yup.object().shape({
   userEmail: Yup.string()
@@ -96,11 +97,12 @@ function CreateUserPage() {
                 <Form>
                   <FormContent>
                     <img
-                      src={`https://img.freepik.com/vetores-premium/design-de-logotipo-de-cuidados-com-animais-de-estimacao_646665-51.jpg`}
+                      src={logo}
                       style={{
                         width: 250,
                         display: "flex",
                         alignSelf: "center",
+                        paddingBottom: 50,
                       }}
                       alt={"Logo Conexão Pet"}
                     />

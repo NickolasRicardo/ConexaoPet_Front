@@ -14,7 +14,7 @@ export default function ResponsiveMenu({ children }: IProps) {
   const matches = useMediaQuery("(max-width: 800px)");
 
   useLayoutEffect(() => {
-    console.log("aqui");
+    //console.log("aqui");
     setMobile(matches);
   }, [matches]);
 

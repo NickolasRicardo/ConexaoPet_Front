@@ -8,6 +8,9 @@ import { useAuth } from "../Hooks/authenticator";
 import { IRouteMenu } from "../router/routes/Shared.config.routes";
 import { routesSharedMenu } from "../router/routes/Shared.config.routes";
 import { routesPrestadorMenu } from "../router/routes/Prestador.config.routes";
+import { Home, House, Logout, Pets } from "@mui/icons-material";
+import Icon, { HomeOutlined } from "@ant-design/icons";
+import logo from "../Assets/ConexaoPet-logo.png";
 
 interface Props {
   children: React.ReactNode;
@@ -31,7 +34,6 @@ const Layout: React.FC<Props> = ({ children }) => {
   };
 
   useEffect(() => {
-    console.log("aaa");
     loadingPaths();
     setCurrentPath(location.pathname);
   }, [location]);
@@ -44,15 +46,41 @@ const Layout: React.FC<Props> = ({ children }) => {
 
   return (
     <>
-      <Menu mode="horizontal" selectedKeys={[currentPath]}>
+      <Menu
+        mode="horizontal"
+        selectedKeys={[currentPath]}
+        style={{
+          flexWrap: "wrap",
+          alignItems: "center",
+          borderBottom: 0,
+          backgroundColor: "#a0e66c",
+          zIndex: 99999,
+        }}
+      >
         {paths.map((path) => (
-          <Menu.Item onClick={() => history.push(path.path)} key={path.path}>
+          <Menu.Item
+            onClick={() => history.push(path.path)}
+            key={path.path}
+            icon={<Icon component={path.Icon as any} />}
+          >
             {path.name}
           </Menu.Item>
         ))}
-        <Menu.Item onClick={() => sair()}>Logout</Menu.Item>
+        <Menu.Item onClick={signOut} icon={<Icon component={Logout as any} />}>
+          Logout
+        </Menu.Item>
+        <li style={{ order: -1, marginRight: "50px", marginLeft: "50px" }}>
+          <img
+            src={logo}
+            style={{
+              maxWidth: "150px",
+              paddingTop: "10px",
+            }}
+            alt={"Logo Conexão Pet"}
+          />
+        </li>
       </Menu>
-      <div>{children}</div>
+      <S.Container>{children}</S.Container>
     </>
   );
 };
