@@ -18,6 +18,7 @@ import { Typography } from "@material-ui/core";
 import { Button } from "antd";
 
 import logo from "../../../Assets/ConexaoPet-logo.png";
+import { useHistory } from "react-router-dom";
 // VALIDATION
 const SignInSchema = Yup.object().shape({
   userEmail: Yup.string()
@@ -53,6 +54,7 @@ function CreateUserPage() {
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState(false);
   const { signIn } = useAuth();
+  const navigate = useHistory();
 
   const handleSignIn = async (values: any) => {
     setError(false);
@@ -173,7 +175,7 @@ function CreateUserPage() {
                         alignSelf: "center",
                         marginTop: 0,
                       }}
-                      href="/login"
+                      onClick={() => navigate.push("/login")}
                     >
                       Voltar
                     </Button>

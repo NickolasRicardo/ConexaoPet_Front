@@ -1,0 +1,15 @@
+{
+  "title": "Conexão pet é top",
+  "text": "Plataforma para você encontrar um cuidador para o seu animalzinho de estimação, e também para você cuidador, oferecer seus serviços para várias pessoas.",
+  "button": [
+    {
+      "title": "Contato",
+      "moveto": "contato"
+    },
+    {
+      "title": "Learn more",
+      "moveto": "contato",
+      "color": "#fff"
+    }
+  ]
+}

@@ -1,7 +1,11 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { LoginPage } from "../../pages/public/Login";
 import { CreateUserPage } from "../../pages/public/CreateAccount";
+import { LandingPage } from "../../pages/public/LandingPage";
+import { Styles } from "../../styles/styles";
+import Header from "../../components/Header";
+import path from "path";
 
 interface IRoute {
   path: string;
@@ -12,8 +16,8 @@ interface IRoute {
 const routes: IRoute[] = [
   {
     path: "/",
-    name: "login",
-    component: () => <LoginPage />,
+    name: "home",
+    component: () => <LandingPage />,
   },
   {
     path: "/login",
@@ -40,9 +44,22 @@ function RouteWithSubRoutes(route: IRoute, key: number) {
 
 function RouteAuth() {
   return (
-    <div>
-      <Switch>{routes.map((route, i) => RouteWithSubRoutes(route, i))}</Switch>
-    </div>
+    <>
+      {routes.map((route, i) =>
+        route.name === "home" ? (
+          <Suspense fallback={null}>
+            <Styles />
+            <Header />
+            <Switch>{RouteWithSubRoutes(route, i)}</Switch>
+          </Suspense>
+        ) : (
+          <Suspense key={i} fallback={null}>
+            <Styles />
+            <Switch>{RouteWithSubRoutes(route, i)}</Switch>
+          </Suspense>
+        )
+      )}
+    </>
   );
 }
 

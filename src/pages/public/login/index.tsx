@@ -6,6 +6,7 @@ import * as styles from "./styles";
 import { Grid } from "@mui/material";
 import { Button } from "antd";
 import Logo from "../../../Assets/ConexaoPet-logo.png";
+import { useHistory } from "react-router-dom";
 
 // VALIDATION
 const SignInSchema = Yup.object().shape({
@@ -27,7 +28,7 @@ function LoginPage() {
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState(false);
   const { signIn } = useAuth();
-
+  const navigate = useHistory();
   const handleSignIn = async (values: any) => {
     setError(false);
     setLoading(true);
@@ -108,7 +109,7 @@ function LoginPage() {
                         alignSelf: "center",
                         marginTop: 0,
                       }}
-                      href="/register"
+                      onClick={() => navigate.push("/register")}
                     >
                       Novo usuário
                     </Button>
