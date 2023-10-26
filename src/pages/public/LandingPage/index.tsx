@@ -35,21 +35,21 @@ function LandingPage() {
         title={AboutContent.title}
         content={AboutContent.text}
         section={AboutContent.section}
-        icon="graphs.svg"
+        icon="everyday_life.svg"
         id="sobre"
       />
       <ContentBlock
         type="right"
         title={MissionContent.title}
         content={MissionContent.text}
-        icon="product-launch.svg"
+        icon="good_doggy.svg"
         id="missao"
       />
       <ContentBlock
         type="left"
         title={ProductContent.title}
         content={ProductContent.text}
-        icon="waving.svg"
+        icon="dog_walking.svg"
         id="produto"
       />
       <Contact
