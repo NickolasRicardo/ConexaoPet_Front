@@ -6,13 +6,13 @@ import RouterPrestador from "./prestador/PrestadorRouter";
 
 import RoutePublic from "./public/PublicRouter.routes";
 
-import { useAuth } from "src/hooks/authenticator";
-import { getColors } from "src/@styles/colorsTheme";
+import { useAuth } from "@src/hooks/authenticator";
+import { getColors } from "@src/@styles/colorsTheme";
 
 // import OperacionalLayout from '@layouts/Cliente';
 
-import { LoadingProvider } from "src/hooks/LoadingContext";
-import { Layout as AdminLayout } from "src/layouts/index";
+import { LoadingProvider } from "@src/hooks/LoadingContext";
+import { Layout as AdminLayout } from "@src/layouts/index";
 
 import { Spin } from "antd";
 

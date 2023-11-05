@@ -2,12 +2,12 @@ import { Row, Col } from "antd";
 import { withTranslation } from "react-i18next";
 import { Slide, Zoom } from "react-awesome-reveal";
 import { ContactProps, ValidationTypeProps } from "./types";
-import { useForm } from "src/common/utils/useForm";
-import validate from "src/common/utils/validationRules";
-import { Button } from "src/common/Button";
-import Block from "src/components/block";
-import Input from "src/common/input";
-import TextArea from "src/common/textArea";
+import { useForm } from "@src/common/utils/useForm";
+import validate from "@src/common/utils/validationRules";
+import { Button } from "@src/common/Button";
+import Block from "@src/components/block";
+import Input from "@src/common/input";
+import TextArea from "@src/common/textArea";
 import { ContactContainer, FormGroup, Span, ButtonContainer } from "./styles";
 
 const Contact = ({ title, content, id, t }: ContactProps) => {

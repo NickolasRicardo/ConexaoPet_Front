@@ -1,14 +1,14 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 
-import { Layout } from "src/layouts";
+import { Layout } from "@src/layouts";
 
 // import { getRouteByID } from '@hooks/getFuncionalidades';
 
-import { routesPrestador } from "src/router/routes/Prestador.config.routes";
+import { routesPrestador } from "@src/router/routes/Prestador.config.routes";
 
-import { useAuth } from "src/hooks/authenticator";
-import { IRoute } from "src/router/routes/Shared.config.routes";
+import { useAuth } from "@src/hooks/authenticator";
+import { IRoute } from "@src/router/routes/Shared.config.routes";
 
 function RenderRoutes(route: IRoute, key: number, user: any) {
   const ComponentRoute = route.component;

@@ -1,12 +1,12 @@
 import React from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import { useAuth } from "src/hooks/authenticator";
+import { useAuth } from "@src/hooks/authenticator";
 import * as styles from "./styles";
 import { Grid } from "@mui/material";
 import { Button } from "antd";
-import Logo from "src/assets/ConexaoPet-logo.png";
-import Background from "src/assets/background.svg";
+import Logo from "@src/assets/ConexaoPet-logo.png";
+import Background from "@src/assets/background.svg";
 import { useHistory } from "react-router-dom";
 
 // VALIDATION

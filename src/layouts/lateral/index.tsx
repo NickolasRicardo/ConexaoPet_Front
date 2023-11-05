@@ -1,8 +1,8 @@
 import React, { ReactNode, useLayoutEffect, useState } from "react";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 
-import MenuMobile from "src/components/menuMobile";
-import MenuDesktop from "src/components/menuDesktop";
+import MenuMobile from "@src/components/menuMobile";
+import MenuDesktop from "@src/components/menuDesktop";
 
 import { Container, ContainerMobile } from "./styles";
 interface IProps {

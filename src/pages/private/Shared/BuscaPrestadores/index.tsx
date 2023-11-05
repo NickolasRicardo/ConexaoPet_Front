@@ -10,8 +10,8 @@ import { Grid } from "@mui/material";
 import { Button, Dropdown, Input, Space, Typography, message } from "antd";
 import type { MenuProps } from "antd";
 
-import { CardPerson } from "src/components/cardPerson";
-import Background from "src/assets/background.svg";
+import { CardPerson } from "@src/components/cardPerson";
+import Background from "@src/assets/background.svg";
 
 // HTML PAGE
 function BuscaPrestadores() {
@@ -61,14 +61,14 @@ function BuscaPrestadores() {
             style={{
               backgroundColor: "white",
               maxWidth: "100%",
-              boxShadow: " 0px 14px 15px 5px rgba(0,0,0,0.26)",
+              boxShadow: " 0px 10px 10px 0px rgba(0,0,0,0.26)",
+              borderRadius: 10,
               marginTop: 10,
               padding: 10,
             }}
           >
             <Grid container>
-              <Grid item xs={0} sm={2} md={2}></Grid>
-              <Grid item xs={12} sm={8} md={8}>
+              <Grid item xs={12} sm={12} md={12}>
                 <Grid container alignContent={"center"}>
                   <Grid item xs={6} sm={12} style={{ marginTop: 10 }}>
                     <Typography>Pesquisar:</Typography>
@@ -176,4 +176,3 @@ function BuscaPrestadores() {
 }
 
 export { BuscaPrestadores };
-

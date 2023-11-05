@@ -8,13 +8,13 @@ import ListItem2 from "@material-ui/core/ListItem";
 
 import { useStyles } from "./styles";
 
-import { getColors } from "src/@styles/colorsTheme";
-import { useAuth } from "src/hooks/authenticator";
+import { getColors } from "@src/@styles/colorsTheme";
+import { useAuth } from "@src/hooks/authenticator";
 import LogoutIcon from "@mui/icons-material/Logout";
 
-import { routesPrestadorMenu as routesGEAdminMenu } from "src/router/routes/Prestador.config.routes";
-import { routesSharedMenu } from "src/router/routes/Shared.config.routes";
-import { IRouteMenu } from "src/router/routes/Shared.config.routes";
+import { routesPrestadorMenu as routesGEAdminMenu } from "@src/router/routes/Prestador.config.routes";
+import { routesSharedMenu } from "@src/router/routes/Shared.config.routes";
+import { IRouteMenu } from "@src/router/routes/Shared.config.routes";
 
 interface IListProps {
   menuOpen: boolean;

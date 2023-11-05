@@ -3,8 +3,8 @@ import * as S from "./styles";
 import { Grid } from "@mui/material";
 import { User } from "./object";
 import { Typography } from "antd";
-import { CardPet } from "src/components/CardPet";
-import Background from "src/assets/background.svg";
+import { CardPet } from "@src/components/cardPet";
+import Background from "@src/assets/background.svg";
 
 // HTML PAGE
 function MeuPerfil() {
@@ -279,4 +279,3 @@ function MeuPerfil() {
 }
 
 export { MeuPerfil };
-

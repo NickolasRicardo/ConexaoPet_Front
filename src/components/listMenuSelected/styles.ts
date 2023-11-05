@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 
-import { getColors } from "src/@styles/colorsTheme";
+import { getColors } from "@src/@styles/colorsTheme";
 //Components CSS
 export const Container = styled.div``;
 //Components CSS

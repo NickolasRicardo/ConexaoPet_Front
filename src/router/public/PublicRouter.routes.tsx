@@ -1,10 +1,10 @@
 import React, { Suspense } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import { LoginPage } from "src/pages/public/Login";
-import { CreateUserPage } from "src/pages/public/CreateAccount";
-import { LandingPage } from "src/pages/public/LandingPage";
-import { Styles } from "src/styles/styles";
-import Header from "src/components/header";
+import { LoginPage } from "@src/pages/public/Login";
+import { CreateUserPage } from "@src/pages/public/CreateAccount";
+import { LandingPage } from "@src/pages/public/LandingPage";
+import { Styles } from "@src/styles/styles";
+import Header from "@src/components/header";
 import path from "path";
 
 interface IRoute {
