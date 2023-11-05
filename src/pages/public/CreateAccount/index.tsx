@@ -3,7 +3,7 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import { cpf } from "cpf-cnpj-validator";
 
-import { useAuth } from "../../../Hooks/authenticator";
+import { useAuth } from "../../../hooks/authenticator";
 import {
   ButtonCss,
   StyledField as Field,
@@ -16,9 +16,9 @@ import {
 import { Grid } from "@mui/material";
 import { Typography } from "@material-ui/core";
 import { Button } from "antd";
-import Background from "../../../Assets/background.svg";
+import Background from "../../../assets/background.svg";
 
-import logo from "../../../Assets/ConexaoPet-logo.png";
+import logo from "../../../assets/ConexaoPet-logo.png";
 import { useHistory } from "react-router-dom";
 // VALIDATION
 const SignInSchema = Yup.object().shape({

@@ -1,18 +1,18 @@
 import React, { useEffect } from "react";
 // import { GetRoutesPermissions } from '@hooks/auth';
 
-import RouterShared from "./PrivateShared/SharedRouter";
-import RouterPrestador from "./Prestador/PrestadorRouter";
+import RouterShared from "./privateShared/SharedRouter";
+import RouterPrestador from "./prestador/PrestadorRouter";
 
 import RoutePublic from "./public/PublicRouter.routes";
 
-import { useAuth } from "../Hooks/authenticator";
-import { getColors } from "../@styles/colorsTheme";
+import { useAuth } from "src/hooks/authenticator";
+import { getColors } from "src/@styles/colorsTheme";
 
 // import OperacionalLayout from '@layouts/Cliente';
 
-import { LoadingProvider } from "../Hooks/LoadingContext";
-import { Layout as AdminLayout } from "../layouts/index";
+import { LoadingProvider } from "src/hooks/LoadingContext";
+import { Layout as AdminLayout } from "src/layouts/index";
 
 import { Spin } from "antd";
 

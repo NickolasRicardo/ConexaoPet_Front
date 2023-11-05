@@ -1,3 +1,5 @@
+import React, { useEffect } from "react";
+
 import {
   LocationCity,
   Person,
@@ -6,10 +8,10 @@ import {
 } from "@mui/icons-material";
 import { Grid } from "@mui/material";
 import { Button, Dropdown, Input, Space, Typography, message } from "antd";
-import React, { useEffect } from "react";
 import type { MenuProps } from "antd";
-import { CardPerson } from "../../../../components/CardPerson";
-import Background from "../../../../Assets/background.svg";
+
+import { CardPerson } from "src/components/cardPerson";
+import Background from "src/assets/background.svg";
 
 // HTML PAGE
 function BuscaPrestadores() {

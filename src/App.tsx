@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
 
-import AppProviders from "./Hooks";
+import AppProviders from "./hooks";
 import Router from "./router/OrchestratorRoutes";
 
 import Global from "./@styles/global";

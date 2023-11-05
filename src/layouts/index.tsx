@@ -4,13 +4,13 @@ import { useHistory, useLocation } from "react-router-dom";
 import { Menu } from "antd";
 
 import * as S from "./styles";
-import { useAuth } from "../Hooks/authenticator";
-import { IRouteMenu } from "../router/routes/Shared.config.routes";
-import { routesSharedMenu } from "../router/routes/Shared.config.routes";
-import { routesPrestadorMenu } from "../router/routes/Prestador.config.routes";
+import { useAuth } from "src/hooks/authenticator";
+import { IRouteMenu } from "src/router/routes/Shared.config.routes";
+import { routesSharedMenu } from "src/router/routes/Shared.config.routes";
+import { routesPrestadorMenu } from "src/router/routes/Prestador.config.routes";
 import { Home, House, Logout, Pets } from "@mui/icons-material";
 import Icon, { HomeOutlined } from "@ant-design/icons";
-import logo from "../Assets/ConexaoPet-logo.png";
+import logo from "src/assets/ConexaoPet-logo.png";
 
 interface Props {
   children: React.ReactNode;
