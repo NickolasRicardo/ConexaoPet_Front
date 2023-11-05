@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import "@fontsource/poppins";
 
 // import RobotoRegular from '../assets/fonts/Roboto/Roboto-Regular.ttf';
 /* @font-face {
@@ -14,7 +15,7 @@ export default createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
     outline: 0;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poppins';
   }
 
   .css-34he1w-MuiRating-decimal{

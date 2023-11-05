@@ -14,14 +14,26 @@ interface ICardPet {
   personName: string;
   personPicture: string;
   personRate: string;
+  personDistrict: string;
   personDistance: string;
+  personDescription: string;
+  personPrice: string;
 }
 
 export const CardPerson = (values: ICardPet) => {
   return (
     <>
-      <Grid container style={{ marginTop: 10, border: "solid" }}>
-        <Grid xs={4} sm={2} md={2} alignSelf={"center"}>
+      <Grid
+        container
+        style={{
+          marginTop: 10,
+          border: "solid",
+          borderRadius: 10,
+          paddingTop: 15,
+          backgroundColor: "White",
+        }}
+      >
+        <Grid xs={12} sm={2} md={2} alignSelf={"center"}>
           <Grid container style={{ alignItems: "center" }}>
             <Grid
               item
@@ -65,37 +77,58 @@ export const CardPerson = (values: ICardPet) => {
             </Grid>
           </Grid>
         </Grid>
-        <Grid
-          item
-          xs={6}
-          sm={6}
-          md={6}
-          style={{ padding: 20, border: "solid" }}
-        >
-          <Typography>
-            <h1 style={{ fontSize: 20 }}>{values.personName} </h1>
-            <br />
-            Distância: {values.personDistance}km
-            <br />
-          </Typography>
+        <Grid item xs={12} sm={6} md={6} style={{ padding: 20 }}>
+          <Grid container style={{ width: "100%" }}>
+            <Grid
+              md={"auto"}
+              xs={12}
+              style={{
+                fontSize: 20,
+                marginRight: 10,
+                alignSelf: "flex-end",
+              }}
+            >
+              <p
+                style={{
+                  overflowWrap: "break-word",
+                  wordWrap: "break-word",
+                  hyphens: "auto",
+                }}
+              >
+                {values.personName}
+              </p>
+            </Grid>
+            <Grid
+              xs={12}
+              md={6}
+              style={{
+                fontSize: 16,
+                alignSelf: "flex-end",
+                fontFamily: "Poppins",
+                fontWeight: "100",
+              }}
+            >
+              {values.personDistrict} - {values.personDistance}km <br />
+            </Grid>
+            <Grid xs={12} md={12} style={{ marginTop: 10 }}>
+              {values.personDescription}
+            </Grid>
+          </Grid>
         </Grid>
         <Grid
           item
-          xs={2}
+          xs={12}
           sm={2}
           md={2}
           style={{
             padding: 20,
-            border: "solid",
-            borderLeft: "none",
-            borderTopRightRadius: 10,
-            borderEndEndRadius: 10,
+            textAlign: "end",
+            alignSelf: "end",
+            fontWeight: "bold",
+            color: "#5067E6",
           }}
         >
-          <Button style={{ width: "100%" }}>{"Ver Mais"}</Button>
-          <br />
-          <br />
-          <Button style={{ width: "100%" }}>{"Contratar"}</Button>
+          R${values.personPrice}/por noite
         </Grid>
       </Grid>
     </>

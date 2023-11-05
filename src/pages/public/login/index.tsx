@@ -46,81 +46,92 @@ function LoginPage() {
 
   return (
     <>
-      <Grid
-        container
+      <div
         style={{
-          backgroundImage: `url(${Background})`,
+          background: `url(${Background})`,
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
+          height: "100%",
+          width: "100%",
+          position: "fixed",
+          display: "flex",
         }}
       >
-        <Grid item lg={12} xs={12} md={12} sm={12}>
-          <styles.Content>
-            <Formik
-              initialValues={{
-                userEmail: "",
-                password: "",
-              }}
-              validationSchema={SignInSchema}
-              onSubmit={(values) => {
-                handleSignIn(values);
-              }}
-            >
-              {({ errors, touched, isValid }) => (
-                <styles.StyledForm>
-                  <styles.FormContent>
-                    <img
-                      src={Logo}
-                      style={{
-                        width: 250,
-                        display: "flex",
-                        alignSelf: "center",
-                        paddingBottom: 50,
-                      }}
-                      alt={"Logo Conexão Pet"}
-                    />
-                    <styles.StyledField name="userEmail" placeholder="Email" />
-                    {errors.userEmail && touched.userEmail ? (
-                      <div>{errors.userEmail}</div>
-                    ) : null}
-                    <br />
-                    <styles.StyledField
-                      name="password"
-                      placeholder="Password"
-                      type="password"
-                    />
-                    {errors.password && touched.password ? (
-                      <div>{errors.password}</div>
-                    ) : null}
-                    <br />
-                    <styles.ButtonCss type="submit" disabled={!isValid}>
-                      {loading ? "Carregando..." : "Entrar"}
-                    </styles.ButtonCss>
+        <Grid
+          container
+          style={{ justifyContent: "center", alignContent: "center" }}
+        >
+          <Grid item lg={12} xs={12} md={12} sm={12}>
+            <styles.Content>
+              <Formik
+                initialValues={{
+                  userEmail: "",
+                  password: "",
+                }}
+                validationSchema={SignInSchema}
+                onSubmit={(values) => {
+                  handleSignIn(values);
+                }}
+              >
+                {({ errors, touched, isValid }) => (
+                  <styles.StyledForm>
+                    <styles.FormContent>
+                      <img
+                        src={Logo}
+                        style={{
+                          width: 250,
+                          display: "flex",
+                          alignSelf: "center",
+                          paddingBottom: 50,
+                        }}
+                        alt={"Logo Conexão Pet"}
+                      />
+                      <styles.StyledField
+                        name="userEmail"
+                        placeholder="Email"
+                      />
+                      {errors.userEmail && touched.userEmail ? (
+                        <div>{errors.userEmail}</div>
+                      ) : null}
+                      <br />
+                      <styles.StyledField
+                        name="password"
+                        placeholder="Password"
+                        type="password"
+                      />
+                      {errors.password && touched.password ? (
+                        <div>{errors.password}</div>
+                      ) : null}
+                      <br />
+                      <styles.ButtonCss type="submit" disabled={!isValid}>
+                        {loading ? "Carregando..." : "Entrar"}
+                      </styles.ButtonCss>
 
-                    {error && (
-                      <styles.ErrorMessage>
-                        Usuário ou senha invalidas
-                      </styles.ErrorMessage>
-                    )}
-                    <br />
-                    <Button
-                      style={{
-                        backgroundColor: "",
-                        width: "80%",
-                        alignSelf: "center",
-                        marginTop: 0,
-                      }}
-                      onClick={() => navigate.push("/register")}
-                    >
-                      Novo usuário
-                    </Button>
-                  </styles.FormContent>
-                </styles.StyledForm>
-              )}
-            </Formik>
-          </styles.Content>
+                      {error && (
+                        <styles.ErrorMessage>
+                          Usuário ou senha invalidas
+                        </styles.ErrorMessage>
+                      )}
+                      <br />
+                      <Button
+                        style={{
+                          backgroundColor: "",
+                          width: "80%",
+                          alignSelf: "center",
+                          marginTop: 0,
+                        }}
+                        onClick={() => navigate.push("/register")}
+                      >
+                        Novo usuário
+                      </Button>
+                    </styles.FormContent>
+                  </styles.StyledForm>
+                )}
+              </Formik>
+            </styles.Content>
+          </Grid>
         </Grid>
-      </Grid>
+      </div>
     </>
   );
 }

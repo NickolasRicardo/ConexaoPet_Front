@@ -4,6 +4,8 @@ import { Grid } from "@mui/material";
 import { User } from "./object";
 import { Typography } from "antd";
 import { CardPet } from "../../../../components/CardPet";
+import Background from "../../../../Assets/background.svg";
+
 // HTML PAGE
 function MeuPerfil() {
   useEffect(() => {
@@ -14,8 +16,7 @@ function MeuPerfil() {
     <>
       <div
         style={{
-          background:
-            "url(https://as2.ftcdn.net/v2/jpg/05/25/78/33/1000_F_525783364_wLHN1SMAnXb2WB9mITpxW2aPjLZhDXJr.jpg)",
+          background: `url(${Background})`,
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
           height: "100%",

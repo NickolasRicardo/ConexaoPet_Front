@@ -9,6 +9,8 @@ import { Button, Dropdown, Input, Space, Typography, message } from "antd";
 import React, { useEffect } from "react";
 import type { MenuProps } from "antd";
 import { CardPerson } from "../../../../components/CardPerson";
+import Background from "../../../../Assets/background.svg";
+
 // HTML PAGE
 function BuscaPrestadores() {
   useEffect(() => {
@@ -38,89 +40,135 @@ function BuscaPrestadores() {
   };
   return (
     <>
-      <Grid
-        container
+      <div
         style={{
-          background:
-            "url(https://as2.ftcdn.net/v2/jpg/05/25/78/33/1000_F_525783364_wLHN1SMAnXb2WB9mITpxW2aPjLZhDXJr.jpg)",
+          background: `url(${Background})`,
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
-          height: "93.2vh",
+          height: "100%",
+          position: "relative",
         }}
       >
-        <Grid item xs={0} sm={1} md={1}></Grid>
-        <Grid
-          item
-          xs={12}
-          sm={8}
-          md={8}
-          style={{
-            backgroundColor: "white",
-            minHeight: 600,
-            maxWidth: "100%",
+        <Grid container>
+          <Grid item xs={0} sm={1} md={1} />
+          <Grid
+            item
+            xs={12}
+            sm={8}
+            md={8}
+            style={{
+              backgroundColor: "white",
+              maxWidth: "100%",
+              boxShadow: " 0px 14px 15px 5px rgba(0,0,0,0.26)",
+              marginTop: 10,
+              padding: 10,
+            }}
+          >
+            <Grid container>
+              <Grid item xs={0} sm={2} md={2}></Grid>
+              <Grid item xs={12} sm={8} md={8}>
+                <Grid container alignContent={"center"}>
+                  <Grid item xs={6} sm={12} style={{ marginTop: 10 }}>
+                    <Typography>Pesquisar:</Typography>
+                  </Grid>
+                  <Grid item xs={6} sm={2} style={{ marginTop: 10 }}>
+                    <Dropdown menu={menuProps}>
+                      <Button>
+                        <Space>Pesquisar por:</Space>
+                      </Button>
+                    </Dropdown>
+                  </Grid>
+                  <Grid item xs={9} sm={8} style={{ marginTop: 10 }}>
+                    <Input
+                      type={"text"}
+                      style={{ width: "100%" }}
+                      placeholder="Buscar"
+                    />
+                  </Grid>
 
-            boxShadow: " 0px 14px 15px 5px rgba(0,0,0,0.26)",
-          }}
-        >
-          <Grid container style={{ marginTop: 10, padding: 30 }}>
-            <Grid item xs={12} sm={2} md={2}></Grid>
-            <Grid item xs={12} sm={8} md={8}>
-              <Grid container>
-                <Grid item sm={12}>
-                  <Typography>Pesquisar:</Typography>
-                </Grid>
-                <Grid item sm={2}>
-                  <Dropdown menu={menuProps}>
+                  <Grid
+                    item
+                    xs={2}
+                    sm={2}
+                    style={{ marginTop: 10, paddingLeft: 5 }}
+                  >
                     <Button>
-                      <Space>Pesquisar por:</Space>
+                      <Search />
                     </Button>
-                  </Dropdown>
-                </Grid>
-                <Grid item sm={8}>
-                  <Input
-                    type={"text"}
-                    style={{ width: "100%" }}
-                    placeholder="Buscar"
-                  />
-                </Grid>
-                <Grid item sm={2}>
-                  <Button>
-                    <Search />
-                  </Button>
+                  </Grid>
                 </Grid>
               </Grid>
             </Grid>
-
-            <Grid item xs={12} sm={12} md={12} style={{ marginTop: 30 }}>
-              <CardPerson
-                personName="João da Silva"
-                personDistance="4"
-                personPicture="https://cdn-icons-png.flaticon.com/512/4086/4086679.png"
-                personRate="5"
-              />
-              <CardPerson
-                personName="José dos Santos"
-                personDistance="2"
-                personPicture="https://cdn-icons-png.flaticon.com/512/4086/4086679.png"
-                personRate="3"
-              />
-              <CardPerson
-                personName="Ana dos Santos Silva"
-                personDistance="4"
-                personPicture="https://cdn-icons-png.flaticon.com/512/5231/5231019.png"
-                personRate="4"
-              />
-              <CardPerson
-                personName="Joana da Silva"
-                personDistance="40"
-                personPicture="https://cdn-icons-png.flaticon.com/512/5231/5231019.png"
-                personRate="2"
-              />
-            </Grid>
+          </Grid>
+          <Grid item xs={0} sm={3} md={3} />
+          <Grid item xs={0} sm={1} md={1} />
+          <Grid item xs={12} sm={6} md={6} style={{ margin: 10 }}>
+            <CardPerson
+              personName="João da Silva"
+              personDistance="4"
+              personDistrict="Jardim do Vale"
+              personDescription="Adoro animais e cuido como se fossem meus."
+              personPicture="https://cdn-icons-png.flaticon.com/512/4086/4086679.png"
+              personRate="5"
+              personPrice="25"
+            />
+            <CardPerson
+              personName="João da Silva"
+              personDistance="4"
+              personDistrict="Jardim do Vale"
+              personDescription="Adoro animais e cuido como se fossem meus."
+              personPicture="https://cdn-icons-png.flaticon.com/512/4086/4086679.png"
+              personRate="5"
+              personPrice="25"
+            />
+            <CardPerson
+              personName="João da Silva"
+              personDistance="4"
+              personDistrict="Jardim do Vale"
+              personDescription="Adoro animais e cuido como se fossem meus."
+              personPicture="https://cdn-icons-png.flaticon.com/512/4086/4086679.png"
+              personRate="5"
+              personPrice="25"
+            />
+            <CardPerson
+              personName="João da Silva"
+              personDistance="4"
+              personDistrict="Jardim do Vale"
+              personDescription="Adoro animais e cuido como se fossem meus."
+              personPicture="https://cdn-icons-png.flaticon.com/512/4086/4086679.png"
+              personRate="5"
+              personPrice="25"
+            />
+            <CardPerson
+              personName="José dos Santos"
+              personDistance="2"
+              personDistrict="Jardim do Vale 2"
+              personDescription="Adoro animais e cuido como se fossem meus."
+              personPicture="https://cdn-icons-png.flaticon.com/512/4086/4086679.png"
+              personRate="3.5"
+              personPrice="25"
+            />
+            <CardPerson
+              personName="Ana dos Santos Silva"
+              personDistance="4"
+              personDistrict="Chacaras selles"
+              personDescription="Adoro animais e cuido como se fossem meus."
+              personPicture="https://cdn-icons-png.flaticon.com/512/5231/5231019.png"
+              personRate="4.5"
+              personPrice="25"
+            />
+            <CardPerson
+              personName="Joana da Silva"
+              personDistance="40"
+              personDistrict="Jardim do Vale 2 "
+              personDescription="Adoro animais e cuido como se fossem meus."
+              personPicture="https://cdn-icons-png.flaticon.com/512/5231/5231019.png"
+              personRate="2.5"
+              personPrice="25"
+            />
           </Grid>
         </Grid>
-        <Grid item xs={0} sm={3} md={3} />
-      </Grid>
+      </div>
     </>
   );
 }
