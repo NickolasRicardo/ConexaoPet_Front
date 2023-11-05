@@ -4,6 +4,7 @@ import {
   CardContent,
   CardMedia,
   Grid,
+  Rating,
   Typography,
 } from "@mui/material";
 import { Button } from "antd";
@@ -19,30 +20,50 @@ interface ICardPet {
 export const CardPerson = (values: ICardPet) => {
   return (
     <>
-      <Grid container style={{ marginTop: 10 }}>
-        <Grid
-          item
-          xs={4}
-          sm={2}
-          md={2}
-          style={{
-            border: "solid",
-            borderRight: "none",
-            textAlign: "center",
-          }}
-        >
-          <img
-            src={values.personPicture}
-            width={"50%"}
-            height={"50%"}
-            style={{
-              maxHeight: 150,
-              maxWidth: 150,
-              minWidth: 100,
-              minHeight: 100,
-            }}
-            alt={"personName"}
-          />
+      <Grid container style={{ marginTop: 10, border: "solid" }}>
+        <Grid xs={4} sm={2} md={2} alignSelf={"center"}>
+          <Grid container style={{ alignItems: "center" }}>
+            <Grid
+              item
+              xs={12}
+              sm={12}
+              md={12}
+              style={{
+                textAlign: "center",
+              }}
+            >
+              <img
+                src={values.personPicture}
+                style={{
+                  maxHeight: 72,
+                  maxWidth: 72,
+                  minWidth: 72,
+                  minHeight: 72,
+                  boxShadow: " 0px 4px 5px 1px rgba(0,0,0,0.10)",
+                }}
+                alt={"personName"}
+              />
+            </Grid>
+            <Grid
+              item
+              xs={12}
+              sm={12}
+              md={12}
+              style={{
+                textAlign: "center",
+                marginTop: 10,
+              }}
+            >
+              <Rating
+                name="personRate"
+                value={Number(values.personRate)}
+                size="large"
+                precision={0.5}
+                style={{ fontSize: "1rem !important" }}
+                readOnly
+              />
+            </Grid>
+          </Grid>
         </Grid>
         <Grid
           item
@@ -55,8 +76,6 @@ export const CardPerson = (values: ICardPet) => {
             <h1 style={{ fontSize: 20 }}>{values.personName} </h1>
             <br />
             Distância: {values.personDistance}km
-            <br />
-            Classificação: {values.personRate}/5
             <br />
           </Typography>
         </Grid>

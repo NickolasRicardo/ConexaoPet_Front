@@ -14,9 +14,13 @@ export default createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
     outline: 0;
-    font-size: 14px;
     font-family: 'Roboto', sans-serif;
   }
+
+  .css-34he1w-MuiRating-decimal{
+    font-size: 20px;
+  }
+  
 
   #root{
     height: 100vh;

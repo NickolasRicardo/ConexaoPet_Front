@@ -6,6 +6,7 @@ import * as styles from "./styles";
 import { Grid } from "@mui/material";
 import { Button } from "antd";
 import Logo from "../../../Assets/ConexaoPet-logo.png";
+import Background from "../../../Assets/background.svg";
 import { useHistory } from "react-router-dom";
 
 // VALIDATION
@@ -48,8 +49,9 @@ function LoginPage() {
       <Grid
         container
         style={{
-          backgroundImage: `url(https://wallpaperset.com/w/full/e/5/d/93425.jpg)`,
+          backgroundImage: `url(${Background})`,
           backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
         }}
       >
         <Grid item lg={12} xs={12} md={12} sm={12}>
@@ -92,16 +94,15 @@ function LoginPage() {
                     ) : null}
                     <br />
                     <styles.ButtonCss type="submit" disabled={!isValid}>
-                      {loading ? "carregando..." : "Entrar"}
+                      {loading ? "Carregando..." : "Entrar"}
                     </styles.ButtonCss>
-                    <br />
-                    {error && (
-                      <p style={{ color: "red" }}>
-                        {" "}
-                        Usuário ou senha invalidas{" "}
-                      </p>
-                    )}
 
+                    {error && (
+                      <styles.ErrorMessage>
+                        Usuário ou senha invalidas
+                      </styles.ErrorMessage>
+                    )}
+                    <br />
                     <Button
                       style={{
                         backgroundColor: "",

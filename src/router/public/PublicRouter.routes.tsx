@@ -29,11 +29,6 @@ const routes: IRoute[] = [
     name: "register",
     component: () => <CreateUserPage />,
   },
-
-  {
-    path: "*",
-    component: () => <Redirect to="/login" />,
-  },
 ];
 
 function RouteWithSubRoutes(route: IRoute, key: number) {

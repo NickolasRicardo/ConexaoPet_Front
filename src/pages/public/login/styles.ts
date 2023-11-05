@@ -140,3 +140,9 @@ export const Content = styled.div`
     }
   }
 `;
+
+export const ErrorMessage = styled.p`
+  color: #ff0000;
+  font-size: 15px;
+  text-align: center;
+`;

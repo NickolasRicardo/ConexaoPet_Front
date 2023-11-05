@@ -158,7 +158,7 @@ function CreateUserPage() {
                     ) : null}
                     <br />
                     <ButtonCss type="submit" disabled={!isValid}>
-                      {loading ? "carregando..." : "Criar conta"}
+                      {loading ? "Carregando..." : "Criar conta"}
                     </ButtonCss>
                     <br />
                     {error && (
