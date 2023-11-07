@@ -6,7 +6,8 @@ import { TestGeral } from "../../pages/private/Shared/Test";
 import { MeuPerfil } from "../../pages/private/Shared/MeuPerfil";
 import { MeusPets } from "../../pages/private/Shared/MeusPets";
 import { BuscaPrestadores } from "../../pages/private/Shared/BuscaPrestadores";
-import { TestGeral2 } from "../../pages/private/Shared/Test2";
+import { ConfirmacaoServico } from "../../pages/private/Shared/ConfirmacaoServico";
+import { PagamentoAceito } from "@src/pages/private/Shared/PagamentoAceito";
 
 export interface IRoute {
   index: number | null;
@@ -32,6 +33,20 @@ export const routesShared: IRoute[] = [
     path: "/Home",
     name: "Home",
     component: BuscaPrestadores,
+    roles: ["tutor"],
+  },
+  {
+    index: 4,
+    path: "/confirmar",
+    name: "Confirmar Serviço",
+    component: ConfirmacaoServico,
+    roles: ["tutor"],
+  },
+  {
+    index: 4,
+    path: "/pagamento/success",
+    name: "Pagamento realizado com sucesso!",
+    component: PagamentoAceito,
     roles: ["tutor"],
   },
   // {

@@ -1,5 +1,7 @@
 import { Grid, Rating } from "@mui/material";
+import { Button } from "antd";
 import React from "react";
+import { useHistory } from "react-router-dom";
 
 interface ICardPet {
   personName: string;
@@ -9,9 +11,11 @@ interface ICardPet {
   personDistance: string;
   personDescription: string;
   personPrice: string;
+  buttonNotVisible?: boolean;
 }
 
 export const CardPerson = (values: ICardPet) => {
+  const navigate = useHistory();
   return (
     <>
       <Grid
@@ -112,15 +116,39 @@ export const CardPerson = (values: ICardPet) => {
           sm={2}
           md={2}
           style={{
-            padding: 20,
+            padding: 25,
             textAlign: "end",
             alignSelf: "end",
             fontWeight: "bold",
             color: "#5067E6",
           }}
         >
-          R${values.personPrice}/por noite
+          {Number(values.personPrice) > 0
+            ? `R${values.personPrice}/por noite`
+            : ""}
         </Grid>
+        {!values.buttonNotVisible === true ? (
+          <Grid
+            item
+            xs={12}
+            sm={2}
+            md={2}
+            style={{
+              padding: 20,
+              textAlign: "end",
+              alignSelf: "end",
+              fontWeight: "bold",
+              color: "#5067E6",
+            }}
+          >
+            <Button onClick={() => navigate.push("/confirmar")}>
+              {" "}
+              Contratar{" "}
+            </Button>
+          </Grid>
+        ) : (
+          <></>
+        )}
       </Grid>
     </>
   );

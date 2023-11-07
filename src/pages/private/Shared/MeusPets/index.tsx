@@ -29,7 +29,6 @@ function MeusPets() {
             backgroundColor: "white",
             minHeight: 600,
             maxWidth: "100%",
-
             boxShadow: " 0px 14px 15px 5px rgba(0,0,0,0.26)",
           }}
         ></Grid>
