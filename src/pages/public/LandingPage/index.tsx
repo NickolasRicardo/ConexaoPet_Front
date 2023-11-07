@@ -28,7 +28,6 @@ function LandingPage() {
       <MiddleBlock
         title={MiddleBlockContent.title}
         content={MiddleBlockContent.text}
-        button={MiddleBlockContent.button}
       />
       <ContentBlock
         type="left"
@@ -39,19 +38,20 @@ function LandingPage() {
         id="sobre"
       />
       <ContentBlock
-        type="right"
-        title={MissionContent.title}
-        content={MissionContent.text}
-        icon="good_doggy.svg"
-        id="missao"
-      />
-      <ContentBlock
         type="left"
         title={ProductContent.title}
         content={ProductContent.text}
         icon="dog_walking.svg"
         id="produto"
       />
+      <ContentBlock
+        type="right"
+        title={MissionContent.title}
+        content={MissionContent.text}
+        icon="good_doggy.svg"
+        id="missao"
+      />
+
       <Contact
         title={ContactContent.title}
         content={ContactContent.text}

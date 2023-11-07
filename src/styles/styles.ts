@@ -2,6 +2,12 @@ import { createGlobalStyle } from "styled-components";
 
 export const Styles = createGlobalStyle`
 
+    .react-multi-carousel-item{
+        display: flex !important;
+        justify-content: center;
+
+    }
+
     @font-face {
         font-family: "Motiva Sans Light";
         src: url("/fonts/Motiva-Sans-Light.ttf") format("truetype");

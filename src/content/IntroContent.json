@@ -1,15 +1,14 @@
 {
-  "title": "Conexão pet é top",
-  "text": "Plataforma para você encontrar um cuidador para o seu animalzinho de estimação, e também para você cuidador, oferecer seus serviços para várias pessoas.",
+  "title": "Conexão Pet",
+  "text": "A Conexão Pet é a ponte mais segura e menos burocrática entre você e as soluções para as necessidades do seu pet.",
   "button": [
     {
       "title": "Contato",
       "moveto": "contato"
     },
     {
-      "title": "Learn more",
-      "moveto": "contato",
-      "color": "#fff"
+      "title": "Saiba mais",
+      "moveto": "contato"
     }
   ]
 }
