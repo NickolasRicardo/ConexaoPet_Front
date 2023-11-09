@@ -12,6 +12,7 @@ import {
   FormContent,
   FormTitle,
   Content,
+  ButtonCss2,
 } from "./styles";
 import { Grid } from "@mui/material";
 import { Typography } from "@material-ui/core";
@@ -178,7 +179,7 @@ function CreateUserPage() {
                         </p>
                       )}
 
-                      <Button
+                      <ButtonCss2
                         style={{
                           backgroundColor: "",
                           width: "80%",
@@ -188,7 +189,7 @@ function CreateUserPage() {
                         onClick={() => navigate.push("/login")}
                       >
                         Voltar
-                      </Button>
+                      </ButtonCss2>
                     </FormContent>
                   </Form>
                 )}

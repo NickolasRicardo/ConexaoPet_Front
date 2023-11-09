@@ -113,7 +113,7 @@ function LoginPage() {
                         </styles.ErrorMessage>
                       )}
                       <br />
-                      <Button
+                      <styles.ButtonCss2
                         style={{
                           backgroundColor: "",
                           width: "80%",
@@ -123,7 +123,7 @@ function LoginPage() {
                         onClick={() => navigate.push("/register")}
                       >
                         Novo usuário
-                      </Button>
+                      </styles.ButtonCss2>
                     </styles.FormContent>
                   </styles.StyledForm>
                 )}

@@ -6,7 +6,6 @@ import { LandingPage } from "@src/pages/public/LandingPage";
 import { Styles } from "@src/styles/styles";
 import Header from "@src/components/header";
 import path from "path";
-import { Teste } from "@src/pages/public/Teste";
 
 interface IRoute {
   path: string;
@@ -19,11 +18,6 @@ const routes: IRoute[] = [
     path: "/",
     name: "home",
     component: () => <LandingPage />,
-  },
-  {
-    path: "/teste",
-    name: "teste",
-    component: () => <Teste />,
   },
   {
     path: "/login",
