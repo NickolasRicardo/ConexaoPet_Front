@@ -1,4 +1,4 @@
-import { ICliente } from "../@interfaces/ICliente";
+import { IUser } from "../@interfaces/IUser";
 import { IPagedModel } from "../@interfaces/IPagedModel";
 import api from "../http/api";
 import { IRequestByIDModel } from "../@interfaces/IRequestByIDModel";
@@ -10,7 +10,7 @@ export interface IInterfaceResponseTable {
 
 export interface IInterfaceResponseList {
   error: boolean;
-  response?: ICliente[];
+  response?: IUser[];
 }
 
 export interface IInterfaceResponseFind {
@@ -18,10 +18,15 @@ export interface IInterfaceResponseFind {
   response?: IPagedModel[];
 }
 
+export interface IInterfaceResponseFindById {
+  error: boolean;
+  response?: IUser;
+}
+
 class Services {
   public async List(): Promise<IInterfaceResponseList> {
     return await api
-      .get(`Cliente`)
+      .get(`User`)
       .then((response) => {
         return {
           error: false,
@@ -35,7 +40,7 @@ class Services {
 
   public async ListPaged(): Promise<IInterfaceResponseTable> {
     return await api
-      .get(`Cliente/Paginated`)
+      .get(`User/Paginated`)
       .then((response) => {
         return {
           error: false,
@@ -49,9 +54,9 @@ class Services {
 
   public async Find({
     id,
-  }: IRequestByIDModel): Promise<IInterfaceResponseFind> {
+  }: IRequestByIDModel): Promise<IInterfaceResponseFindById> {
     return await api
-      .get(`Cliente/${id}`)
+      .get(`User/${id}`)
       .then((response) => {
         return {
           error: false,
@@ -63,9 +68,9 @@ class Services {
       });
   }
 
-  public async Create(data: ICliente) {
+  public async Create(data: IUser) {
     return await api
-      .post(`Cliente`, data)
+      .post(`User`, data)
       .then((response) => {
         return {
           error: false,
@@ -76,9 +81,9 @@ class Services {
       });
   }
 
-  public async Update(data: ICliente) {
+  public async Update(data: IUser) {
     return await api
-      .put(`Cliente/${data.id}`, data)
+      .put(`User/${data.id}`, data)
       .then((response) => {
         return {
           error: false,
@@ -91,7 +96,7 @@ class Services {
 
   public async Delete({ id }: IRequestByIDModel) {
     return await api
-      .delete(`Cliente/${id}`)
+      .delete(`User/${id}`)
       .then((response) => {
         return {
           error: false,

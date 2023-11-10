@@ -1,4 +1,4 @@
-import ClienteService from "./clientesService";
+import UserService from "./UsersService";
 export default {
-  ClienteService,
+  UserService,
 };

@@ -4,6 +4,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 
 interface ICardPet {
+  personId: number;
   personName: string;
   personPicture: string;
   personRate: string;
@@ -28,12 +29,13 @@ export const CardPerson = (values: ICardPet) => {
           backgroundColor: "White",
         }}
       >
-        <Grid xs={12} sm={2} md={2} alignSelf={"center"}>
+        <Grid xs={12} sm={12} md={2} alignSelf={"center"}>
           <Grid container style={{ alignItems: "center" }}>
             <Grid
               item
               xs={12}
               sm={12}
+              xl={12}
               md={12}
               style={{
                 textAlign: "center",
@@ -42,10 +44,10 @@ export const CardPerson = (values: ICardPet) => {
               <img
                 src={values.personPicture}
                 style={{
-                  maxHeight: 72,
                   maxWidth: 72,
                   minWidth: 72,
-                  minHeight: 72,
+                  maxHeight: 100,
+                  minHeight: 100,
                   boxShadow: " 0px 4px 5px 1px rgba(0,0,0,0.10)",
                 }}
                 alt={"personName"}
@@ -72,7 +74,7 @@ export const CardPerson = (values: ICardPet) => {
             </Grid>
           </Grid>
         </Grid>
-        <Grid item xs={12} sm={6} md={6} style={{ padding: 20 }}>
+        <Grid item xs={12} sm={12} md={6} style={{ padding: 20 }}>
           <Grid container style={{ width: "100%" }}>
             <Grid
               md={"auto"}
@@ -96,6 +98,7 @@ export const CardPerson = (values: ICardPet) => {
             <Grid
               xs={12}
               md={6}
+              sm={12}
               style={{
                 fontSize: 16,
                 alignSelf: "flex-end",
@@ -113,7 +116,7 @@ export const CardPerson = (values: ICardPet) => {
         <Grid
           item
           xs={12}
-          sm={2}
+          sm={12}
           md={2}
           style={{
             padding: 25,
@@ -124,14 +127,14 @@ export const CardPerson = (values: ICardPet) => {
           }}
         >
           {Number(values.personPrice) > 0
-            ? `R${values.personPrice}/por noite`
+            ? `R$${values.personPrice}/por noite`
             : ""}
         </Grid>
         {!values.buttonNotVisible === true ? (
           <Grid
             item
             xs={12}
-            sm={2}
+            sm={12}
             md={2}
             style={{
               padding: 20,
@@ -141,7 +144,9 @@ export const CardPerson = (values: ICardPet) => {
               color: "#5067E6",
             }}
           >
-            <Button onClick={() => navigate.push("/confirmar")}>
+            <Button
+              onClick={() => navigate.push(`/confirmar/${values.personId}`)}
+            >
               {" "}
               Contratar{" "}
             </Button>

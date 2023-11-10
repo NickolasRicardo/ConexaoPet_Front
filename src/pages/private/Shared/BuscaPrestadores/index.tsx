@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import {
   LocationCity,
@@ -7,21 +7,40 @@ import {
   VerifiedUserOutlined,
 } from "@mui/icons-material";
 import { Grid } from "@mui/material";
-import { Button, Dropdown, Input, Space, Typography, message } from "antd";
+import {
+  Button,
+  Dropdown,
+  Input,
+  Space,
+  Spin,
+  Typography,
+  message,
+} from "antd";
 import type { MenuProps } from "antd";
+
+import Services, { IProvidersTable } from "./services";
 
 import { CardPerson } from "@src/components/cardPerson";
 import Background from "@src/assets/background.svg";
+import { IProviders } from "@src/@interfaces/IProviders";
 
 // HTML PAGE
 function BuscaPrestadores() {
+  const [prestadores, setPrestadores] = useState<any[]>([]);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
-    console.log("aqui");
+    LoadPrestadores();
   }, []);
 
-  const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    message.info("Click on left button.");
-    console.log("click left button", e);
+  const LoadPrestadores = async () => {
+    let services = new Services();
+    setLoading(true);
+    const { error, response } = await services.ListPaged();
+
+    if (!error && response) {
+      setPrestadores(response);
+      setLoading(false);
+    }
   };
 
   const items: MenuProps["items"] = [
@@ -57,7 +76,9 @@ function BuscaPrestadores() {
             item
             xs={12}
             sm={8}
-            md={8}
+            md={10}
+            lg={8}
+            xl={8}
             style={{
               backgroundColor: "white",
               maxWidth: "100%",
@@ -104,70 +125,30 @@ function BuscaPrestadores() {
           </Grid>
           <Grid item xs={0} sm={3} md={3} />
           <Grid item xs={0} sm={1} md={1} />
-          <Grid item xs={12} sm={6} md={6} style={{ margin: 10 }}>
-            <CardPerson
-              personName="João da Silva"
-              personDistance="4"
-              personDistrict="Jardim do Vale"
-              personDescription="Adoro animais e cuido como se fossem meus."
-              personPicture="https://cdn-icons-png.flaticon.com/512/4086/4086679.png"
-              personRate="5"
-              personPrice="25"
-            />
-            <CardPerson
-              personName="João da Silva"
-              personDistance="4"
-              personDistrict="Jardim do Vale"
-              personDescription="Adoro animais e cuido como se fossem meus."
-              personPicture="https://cdn-icons-png.flaticon.com/512/4086/4086679.png"
-              personRate="5"
-              personPrice="25"
-            />
-            <CardPerson
-              personName="João da Silva"
-              personDistance="4"
-              personDistrict="Jardim do Vale"
-              personDescription="Adoro animais e cuido como se fossem meus."
-              personPicture="https://cdn-icons-png.flaticon.com/512/4086/4086679.png"
-              personRate="5"
-              personPrice="25"
-            />
-            <CardPerson
-              personName="João da Silva"
-              personDistance="4"
-              personDistrict="Jardim do Vale"
-              personDescription="Adoro animais e cuido como se fossem meus."
-              personPicture="https://cdn-icons-png.flaticon.com/512/4086/4086679.png"
-              personRate="5"
-              personPrice="25"
-            />
-            <CardPerson
-              personName="José dos Santos"
-              personDistance="2"
-              personDistrict="Jardim do Vale 2"
-              personDescription="Adoro animais e cuido como se fossem meus."
-              personPicture="https://cdn-icons-png.flaticon.com/512/4086/4086679.png"
-              personRate="3.5"
-              personPrice="25"
-            />
-            <CardPerson
-              personName="Ana dos Santos Silva"
-              personDistance="4"
-              personDistrict="Chacaras selles"
-              personDescription="Adoro animais e cuido como se fossem meus."
-              personPicture="https://cdn-icons-png.flaticon.com/512/5231/5231019.png"
-              personRate="4.5"
-              personPrice="25"
-            />
-            <CardPerson
-              personName="Joana da Silva"
-              personDistance="40"
-              personDistrict="Jardim do Vale 2 "
-              personDescription="Adoro animais e cuido como se fossem meus."
-              personPicture="https://cdn-icons-png.flaticon.com/512/5231/5231019.png"
-              personRate="2.5"
-              personPrice="25"
-            />
+          <Grid
+            item
+            xs={12}
+            sm={8}
+            md={10}
+            lg={8}
+            xl={8}
+            style={{ margin: 10 }}
+          >
+            <Spin spinning={loading} />
+            {prestadores.map((item: IProviders) => {
+              return (
+                <CardPerson
+                  personId={item.id ?? 0}
+                  personName={item.useName ?? ""}
+                  personDistance={item.useDistance ?? ""}
+                  personDistrict={item.useDistrict ?? ""}
+                  personDescription={item.useProfileDescription ?? ""}
+                  personPicture={item.useProfilePicture ?? ""}
+                  personRate="5"
+                  personPrice={item.pbkPrice ?? ""}
+                />
+              );
+            })}
           </Grid>
         </Grid>
       </div>

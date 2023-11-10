@@ -1,15 +1,31 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import * as S from "./styles";
 import { Grid } from "@mui/material";
 import { User } from "./object";
 import { Typography } from "antd";
 import { CardPet } from "@src/components/cardPet";
 import Background from "@src/assets/background.svg";
-
+import Service from "@src/services";
+import { IUser } from "@src/@interfaces/IUser";
+import { useAuth } from "@src/hooks/authenticator";
+import { IPet } from "@src/@interfaces/IPet";
 // HTML PAGE
 function MeuPerfil() {
+  const [user, setUser] = useState<IUser>();
+  const id = localStorage.getItem("@app:userID");
+
+  const loadUser = async () => {
+    const userServices = new Service.UserService();
+
+    const { error, response } = await userServices.Find({ id: Number(id) });
+    console.log(response);
+    if (!error && response) {
+      setUser(response);
+    }
+  };
+
   useEffect(() => {
-    console.log("aqui");
+    loadUser();
   }, []);
 
   return (
@@ -55,14 +71,15 @@ function MeuPerfil() {
                   <Grid item xs={12}>
                     <div style={{ textAlign: "center" }}>
                       <img
-                        src={User.profilePicture}
+                        src={user?.useProfilePicture}
                         alt="profile"
                         style={{
                           minHeight: 160,
                           width: 160,
                           maxWidth: 250,
                           maxHeight: 250,
-                          height: "80%",
+                          minWidth: 250,
+                          height: 160,
                           borderRadius: "100%",
                           overflow: "hidden",
                           borderWidth: 3,
@@ -81,7 +98,7 @@ function MeuPerfil() {
                       fontSize: "20px",
                     }}
                   >
-                    {User.nome}
+                    {user?.useName}
                   </Grid>
                 </Grid>
               </Grid>
@@ -110,8 +127,8 @@ function MeuPerfil() {
                     style={{ color: "black", fontSize: "18px", marginTop: 10 }}
                   >
                     <Typography>
-                      {User.profileDescription
-                        .split("\n")
+                      {user?.useProfileDescription
+                        ?.split("\n")
                         .map((paragrafo, index) => (
                           <p key={index}>{paragrafo}</p>
                         ))}
@@ -153,123 +170,23 @@ function MeuPerfil() {
               {"Meus pets"}
             </Grid>
             <Grid container>
-              <Grid
-                item
-                xs={12}
-                sm={6}
-                md={4}
-                style={{ color: "black", fontSize: "18px", marginTop: 10 }}
-              >
-                <CardPet
-                  picture="https://img.freepik.com/fotos-premium/retrato-de-estudio-de-um-lindo-gatinho-preto-e-branco-criado-com-generative-ai_762026-47066.jpg?w=360"
-                  kind="SRD"
-                  name="Gato"
-                />
-              </Grid>
-              <Grid
-                item
-                xs={12}
-                sm={6}
-                md={4}
-                style={{ color: "black", fontSize: "18px", marginTop: 10 }}
-              >
-                <CardPet
-                  picture="https://img.freepik.com/fotos-premium/retrato-de-estudio-de-um-lindo-gatinho-preto-e-branco-criado-com-generative-ai_762026-47066.jpg?w=360"
-                  kind="SRD"
-                  name="Gato"
-                />
-              </Grid>
-              <Grid
-                item
-                xs={12}
-                sm={6}
-                md={4}
-                style={{ color: "black", fontSize: "18px", marginTop: 10 }}
-              >
-                <CardPet
-                  picture="https://blog.emania.com.br/wp-content/uploads/2019/01/como-tirar-foto-de-cachorro.jpg"
-                  kind="SRD"
-                  name="Totó"
-                />
-              </Grid>
-              <Grid
-                item
-                xs={12}
-                sm={6}
-                md={4}
-                style={{ color: "black", fontSize: "18px", marginTop: 10 }}
-              >
-                <CardPet
-                  picture="https://s2-vidadebicho.glbimg.com/KZTd_8gIkkiAwT2cJ0QARS3bMlY=/0x0:1200x775/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_fb623579cd474803aedbbbbae014af68/internal_photos/bs/2022/K/z/dguBMXRMOsX8WmbGQNAQ/2022-09-16-caes-miniatura-tendencia-pode-nao-ser-saudavel-para-os-animais.jpeg"
-                  kind="SRD"
-                  name="Princesa"
-                />
-              </Grid>
-              <Grid
-                item
-                xs={12}
-                sm={6}
-                md={4}
-                style={{ color: "black", fontSize: "18px", marginTop: 10 }}
-              >
-                <CardPet
-                  picture="https://s2-vidadebicho.glbimg.com/KZTd_8gIkkiAwT2cJ0QARS3bMlY=/0x0:1200x775/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_fb623579cd474803aedbbbbae014af68/internal_photos/bs/2022/K/z/dguBMXRMOsX8WmbGQNAQ/2022-09-16-caes-miniatura-tendencia-pode-nao-ser-saudavel-para-os-animais.jpeg"
-                  kind="SRD"
-                  name="Princesa"
-                />
-              </Grid>
-              <Grid
-                item
-                xs={12}
-                sm={6}
-                md={4}
-                style={{ color: "black", fontSize: "18px", marginTop: 10 }}
-              >
-                <CardPet
-                  picture="https://s2-vidadebicho.glbimg.com/KZTd_8gIkkiAwT2cJ0QARS3bMlY=/0x0:1200x775/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_fb623579cd474803aedbbbbae014af68/internal_photos/bs/2022/K/z/dguBMXRMOsX8WmbGQNAQ/2022-09-16-caes-miniatura-tendencia-pode-nao-ser-saudavel-para-os-animais.jpeg"
-                  kind="SRD"
-                  name="Princesa"
-                />
-              </Grid>
-              <Grid
-                item
-                xs={12}
-                sm={6}
-                md={4}
-                style={{ color: "black", fontSize: "18px", marginTop: 10 }}
-              >
-                <CardPet
-                  picture="https://s2-vidadebicho.glbimg.com/KZTd_8gIkkiAwT2cJ0QARS3bMlY=/0x0:1200x775/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_fb623579cd474803aedbbbbae014af68/internal_photos/bs/2022/K/z/dguBMXRMOsX8WmbGQNAQ/2022-09-16-caes-miniatura-tendencia-pode-nao-ser-saudavel-para-os-animais.jpeg"
-                  kind="SRD"
-                  name="Princesa"
-                />
-              </Grid>
-              <Grid
-                item
-                xs={12}
-                sm={6}
-                md={4}
-                style={{ color: "black", fontSize: "18px", marginTop: 10 }}
-              >
-                <CardPet
-                  picture="https://s2-vidadebicho.glbimg.com/KZTd_8gIkkiAwT2cJ0QARS3bMlY=/0x0:1200x775/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_fb623579cd474803aedbbbbae014af68/internal_photos/bs/2022/K/z/dguBMXRMOsX8WmbGQNAQ/2022-09-16-caes-miniatura-tendencia-pode-nao-ser-saudavel-para-os-animais.jpeg"
-                  kind="SRD"
-                  name="Princesa"
-                />
-              </Grid>
-              <Grid
-                item
-                xs={12}
-                sm={6}
-                md={4}
-                style={{ color: "black", fontSize: "18px", marginTop: 10 }}
-              >
-                <CardPet
-                  picture="https://s2-vidadebicho.glbimg.com/KZTd_8gIkkiAwT2cJ0QARS3bMlY=/0x0:1200x775/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_fb623579cd474803aedbbbbae014af68/internal_photos/bs/2022/K/z/dguBMXRMOsX8WmbGQNAQ/2022-09-16-caes-miniatura-tendencia-pode-nao-ser-saudavel-para-os-animais.jpeg"
-                  kind="SRD"
-                  name="Princesa"
-                />
-              </Grid>
+              {user?.petPets?.map((item: IPet) => {
+                return (
+                  <Grid
+                    item
+                    xs={12}
+                    sm={6}
+                    md={4}
+                    style={{ color: "black", fontSize: "18px", marginTop: 10 }}
+                  >
+                    <CardPet
+                      picture={item.petPicture}
+                      kind={item.petBreed}
+                      name={item.petName}
+                    />
+                  </Grid>
+                );
+              })}
             </Grid>
           </Grid>
         </Grid>

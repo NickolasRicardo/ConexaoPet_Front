@@ -18,6 +18,7 @@ import { Grid } from "@mui/material";
 import { Typography } from "@material-ui/core";
 import { Button } from "antd";
 import Background from "../../../assets/background.svg";
+import Services from "@src/services";
 
 import logo from "../../../assets/ConexaoPet-logo.png";
 import { useHistory } from "react-router-dom";
@@ -61,13 +62,37 @@ function CreateUserPage() {
   const handleSignIn = async (values: any) => {
     setError(false);
     setLoading(true);
-    const { userEmail, password } = values;
+    const service = new Services.UserService();
 
+    const { userName, userEmail, userPhone, password, CPF } = values;
+    // "useName": "teste2",
+    // "useEmail": "email@b.c",
+    // "useTelephone": "string",
+    // "useCpfcnpj": "string",
+    // "useProfileDescription": "string",
+    // "useStatus": 1,
+    // "useSubscriber": 0,
+    // "tusId": 1,
+    // "usePassword": "123456"
     try {
-      await signIn({ useremail: userEmail, password: password });
+      await service.Create({
+        useName: userName,
+        useCpfcnpj: CPF,
+        useEmail: userEmail,
+        usePassword: password,
+        useStatus: 1,
+        useSubscriber: 0,
+        tusId: 1,
+        useTelephone: userPhone,
+      });
     } catch (err) {
       setError(true);
     } finally {
+      try {
+        await signIn({ useremail: userEmail, password });
+      } catch (err) {
+        setError(true);
+      }
       setLoading(false);
     }
   };

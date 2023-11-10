@@ -1,13 +1,12 @@
 import { lazy } from "react";
 import IntroContent from "@src/content/IntroContent.json";
 import MiddleBlockContent from "@src/content/MiddleBlockContent.json";
-import AboutContent from "@src/content/AboutContent.json";
 import MissionContent from "@src/content/MissionContent.json";
 import ProductContent from "@src/content/ProductContent.json";
 import ContactContent from "@src/content/ContactContent.json";
 import React from "react";
 import { Slide } from "react-awesome-reveal";
-
+import petsIcon from "@assets/pets.png";
 import Card, { ICarouselCardProps } from "@components/carouselCard";
 
 import Carousel from "react-multi-carousel";
@@ -44,32 +43,27 @@ function LandingPage() {
   const cardJob: ICarouselCardProps[] = [
     {
       body: "Vai viajar por um dia ou mais? Nossos conectores podem hospedar o seu pet, enquanto você aproveita a viagem, seu pet descansa e se diverte.",
-      image:
-        "https://cbissn.ibict.br/images/phocagallery/galeria2/thumbs/phoca_thumb_l_image03_grd.png",
+      image: petsIcon,
       title: "Hospedagem",
     },
     {
       body: "Passar o dia todo sozinho esperando o seu tutor pode ser triste. Nossos conectores estão a disposição para cuidar do seu companheiro pelo tempo que estiver ausente.",
-      image:
-        "https://cbissn.ibict.br/images/phocagallery/galeria2/thumbs/phoca_thumb_l_image03_grd.png",
+      image: petsIcon,
       title: "Creche",
     },
     {
       body: "Caminhadas são excelentes para cães muito agitados, além de previnir obesidade em animais. Temos conectores que realizam passeios de 1 hora com seu cão e ainda podem ensiná-los a sentar e a acalmar-se.",
-      image:
-        "https://cbissn.ibict.br/images/phocagallery/galeria2/thumbs/phoca_thumb_l_image03_grd.png",
+      image: petsIcon,
       title: "Pet walker",
     },
     {
       body: "Nem todo bichinho quer ou pode sair de casa. Não tem problema, nossos conectores podem ir até a sua casa e cuidar do seu amiguinho o tempo que precisar.",
-      image:
-        "https://cbissn.ibict.br/images/phocagallery/galeria2/thumbs/phoca_thumb_l_image03_grd.png",
+      image: petsIcon,
       title: "Pet sitter",
     },
     {
       body: "Higiene está diretamente ligada ao bem estar do seu animal, nada como pêlos aparados e limpinhos para sujar de novo enquanto brinca.",
-      image:
-        "https://cbissn.ibict.br/images/phocagallery/galeria2/thumbs/phoca_thumb_l_image03_grd.png",
+      image: petsIcon,
       title: "Banho e tosa",
     },
   ];
@@ -150,17 +144,6 @@ function LandingPage() {
         id="contato"
       />
     </Container>
-  );
-}
-
-function Item(props: any) {
-  return (
-    <Paper>
-      <h2>{props.item.name}</h2>
-      <p>{props.item.description}</p>
-
-      <Button className="CheckButton">Check it out!</Button>
-    </Paper>
   );
 }
 

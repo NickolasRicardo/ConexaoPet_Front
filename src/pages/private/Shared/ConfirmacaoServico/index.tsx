@@ -14,14 +14,36 @@ import { loadStripe } from "@stripe/stripe-js";
 import { CardPerson } from "@src/components/cardPerson";
 import moment from "moment";
 import { RangePickerProps } from "antd/es/date-picker";
+import { useParams } from "react-router-dom";
+import Services from "./services";
+import { IProviders } from "@src/@interfaces/IProviders";
 
 function ConfirmacaoServico() {
+  const { id }: { id: string } = useParams();
+  const [prestador, setPrestador] = useState<IProviders>();
   const [message, setMessage] = useState("");
   const [pet, setPet] = useState("");
   const { RangePicker } = DatePicker;
   const dateFormat = "MM/DD/YYYY";
+
+  const [loading, setLoading] = useState(false);
+
+  const LoadPrestadores = async () => {
+    let services = new Services();
+    setLoading(true);
+    console.log(id);
+    const { error, response } = await services.FindByID({ id });
+
+    if (!error && response) {
+      setPrestador(response);
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
-    // Check to see if this is a redirect back from Checkout
+    console.log(id);
+    LoadPrestadores();
+
     const query = new URLSearchParams(window.location.search);
 
     if (query.get("success")) {
@@ -70,7 +92,7 @@ function ConfirmacaoServico() {
         />
         <div className="description">
           <h3>Hospedagem</h3>
-          <h5>R$50.00</h5>
+          <h5>{prestador?.pbkPrice}</h5>
         </div>
       </div>
       <form
@@ -128,11 +150,12 @@ function ConfirmacaoServico() {
                 }}
               >
                 <CardPerson
-                  personName="João da Silva"
-                  personDistance="4"
-                  personDistrict="Jardim do Vale"
-                  personDescription="Adoro animais e cuido como se fossem meus."
-                  personPicture="https://cdn-icons-png.flaticon.com/512/4086/4086679.png"
+                  personId={prestador?.id ?? 0}
+                  personName={prestador?.useName ?? ""}
+                  personDistance={prestador?.useDistance ?? ""}
+                  personDistrict={prestador?.useDistrict ?? ""}
+                  personDescription={prestador?.useProfileDescription ?? ""}
+                  personPicture={prestador?.useProfilePicture ?? ""}
                   personRate="5"
                   personPrice="0"
                   buttonNotVisible

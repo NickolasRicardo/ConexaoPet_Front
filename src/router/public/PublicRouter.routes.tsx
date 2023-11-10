@@ -5,7 +5,6 @@ import { CreateUserPage } from "@src/pages/public/CreateAccount";
 import { LandingPage } from "@src/pages/public/LandingPage";
 import { Styles } from "@src/styles/styles";
 import Header from "@src/components/header";
-import path from "path";
 
 interface IRoute {
   path: string;
@@ -28,6 +27,10 @@ const routes: IRoute[] = [
     path: "/register",
     name: "register",
     component: () => <CreateUserPage />,
+  },
+  {
+    path: "*",
+    component: () => <Redirect to="/" />,
   },
 ];
 
