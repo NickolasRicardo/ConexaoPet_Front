@@ -1,18 +1,23 @@
 import React, { useEffect, useState } from "react";
 import * as S from "./styles";
 import { Grid } from "@mui/material";
-import { User } from "./object";
-import { Typography } from "antd";
+import { Modal, Typography } from "antd";
 import { CardPet } from "@src/components/cardPet";
 import Background from "@src/assets/background.svg";
 import Service from "@src/services";
 import { IUser } from "@src/@interfaces/IUser";
 import { useAuth } from "@src/hooks/authenticator";
 import { IPet } from "@src/@interfaces/IPet";
+import { Field, Formik, FormikProps } from "formik";
+import Services from "@src/services";
 // HTML PAGE
 function MeuPerfil() {
   const [user, setUser] = useState<IUser>();
   const id = localStorage.getItem("@app:userID");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+  const [petImage, setPetImage] = useState<any>();
+  const [visible, setVisible] = useState(false);
 
   const loadUser = async () => {
     const userServices = new Service.UserService();
@@ -21,6 +26,35 @@ function MeuPerfil() {
     console.log(response);
     if (!error && response) {
       setUser(response);
+    }
+  };
+
+  const createPet = async (values: any) => {
+    const service = new Services.PetService();
+    setLoading(true);
+    try {
+      let formData = new FormData();
+
+      formData.append("petPictureArchive", petImage);
+
+      console.log(values.petPictureArchive);
+
+      formData.append("petName", values.petName);
+      formData.append("petBreed", values.petBreed);
+      formData.append("petGender", "1");
+      formData.append("petVaccines", "");
+      formData.append("petComments", "");
+      formData.append("petIsActive", "1");
+      formData.append("useId", id ?? "");
+      formData.append("pknId", "1");
+
+      await service.Upload(formData);
+    } catch (err) {
+      setError(true);
+    } finally {
+      loadUser();
+      setLoading(false);
+      setVisible(false);
     }
   };
 
@@ -167,7 +201,41 @@ function MeuPerfil() {
                 marginTop: 10,
               }}
             >
-              {"Meus pets"}
+              <Grid container>
+                <Grid
+                  item
+                  xs={12}
+                  sm={12}
+                  md={12}
+                  lg={6}
+                  xl={6}
+                  style={{
+                    textAlign: "left",
+                    fontWeight: "bold",
+                    color: "black",
+                    fontSize: "20px",
+                    marginTop: 10,
+                  }}
+                >
+                  {"Meus pets"}
+                </Grid>
+                <Grid
+                  item
+                  xs={12}
+                  sm={12}
+                  md={12}
+                  lg={6}
+                  xl={6}
+                  style={{ textAlign: "end" }}
+                >
+                  <S.ButtonCss
+                    onClick={() => setVisible(true)}
+                    style={{ width: "50%", marginTop: 0 }}
+                  >
+                    Cadastrar novo pet
+                  </S.ButtonCss>
+                </Grid>
+              </Grid>
             </Grid>
             <Grid container>
               {user?.petPets?.map((item: IPet) => {
@@ -190,6 +258,45 @@ function MeuPerfil() {
             </Grid>
           </Grid>
         </Grid>
+        <Modal
+          title="Novo Pet"
+          open={visible}
+          onCancel={() => setVisible(false)}
+          footer={null}
+        >
+          <Formik
+            initialValues={{}}
+            onSubmit={(values) => {
+              createPet(values);
+            }}
+          >
+            {(props: FormikProps<any>) => (
+              <S.StyledForm className="Auth-form">
+                <S.FormContent>
+                  Nome do animal:
+                  <S.StyledField name="petName" placeholder="Nome do animal" />
+                  <br />
+                  Raça do animal:
+                  <S.StyledField name="petBreed" placeholder="Raça do animal" />
+                  <br />
+                  Foto do animal:
+                  <S.StyledField
+                    name="petPictureArchive"
+                    type="file"
+                    value={undefined}
+                    onChange={(e: any) => setPetImage(e.target.files[0])}
+                  />
+                  <br />
+                  <br />
+                  <S.ButtonCss type="submit">
+                    {loading ? "carregando..." : "Salvar"}
+                  </S.ButtonCss>
+                  <br />
+                </S.FormContent>
+              </S.StyledForm>
+            )}
+          </Formik>
+        </Modal>
       </div>
     </>
   );
