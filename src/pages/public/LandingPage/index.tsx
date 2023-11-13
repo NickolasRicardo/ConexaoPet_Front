@@ -108,7 +108,7 @@ function LandingPage() {
         id={""}
       />
       <MiddleBlock
-        title={"Quais serviços ofereçemos?"}
+        title={"Quais serviços oferecemos?"}
         content={
           "A plataforma possui varios profissionais que desempenham várias atividades diferentes relacionadas aos seus bichinhos, os trabalhos oferecidos são:  "
         }
